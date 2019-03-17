@@ -23,7 +23,7 @@ public class GongGaoMgr : MonoBehaviour {
     IEnumerator _UpdateGongGaoList(){
 		//重置
 		ResetList();
-        float tmpH = 120f;
+        float tmpH = 180f;
         GongGaoListParent.GetComponent<GridLayoutGroup>().cellSize = new Vector2(Screen.width, tmpH);
 		string tmpGUID = PlayerPrefs.GetString("GUID");
 		bool isGuest = false;
@@ -32,7 +32,7 @@ public class GongGaoMgr : MonoBehaviour {
 			tmpGUID = RyanGlobalProps.GuestGUID;
 			isGuest = true;
 		}
-        string tmpUrl = string.Format("http://www.3d360kk.com/mobile/queryannounces?token={0}",tmpGUID);
+        string tmpUrl = string.Format("http://www.3d360kk.com/mobile/queryannounces?token={0}","00000000-0000-0000-0000-000000000000");
 		Debug.Log(tmpUrl);
         WWW www = new WWW(tmpUrl);
         yield return www;
@@ -44,13 +44,14 @@ public class GongGaoMgr : MonoBehaviour {
 				List<JSONNode> jsList = new List<JSONNode>(){};
 				jsList.AddRange(jn["announces"].Children);
 				for(int i = 0; i < jsList.Count; i++){
-					if(isGuest){
-						Debug.Log("游客身份");
-						if(!PlayerPrefs.HasKey("gonggaodelete"+jsList[i]["id"])){
-							GongGaoBarItem tmpItem = Instantiate(GongGaoBarItemPrefab, GongGaoListParent);
-							tmpItem.Init(jsList[i]);
-						}
-					}else{
+					// if(isGuest){
+					// 	Debug.Log("游客身份");
+					// 	if(!PlayerPrefs.HasKey("gonggaodelete"+jsList[i]["id"])){
+					// 		GongGaoBarItem tmpItem = Instantiate(GongGaoBarItemPrefab, GongGaoListParent);
+					// 		tmpItem.Init(jsList[i]);
+					// 	}
+					// }else
+					{
 						GongGaoBarItem tmpItem = Instantiate(GongGaoBarItemPrefab, GongGaoListParent);
 						print(jsList[i].ToString());
 						Debug.Log(jsList[i]["Date"]);

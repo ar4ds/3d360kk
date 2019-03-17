@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{6F36C089-F853-AD77-8579-6E341CDA81E4}</ProjectGuid>
+    <ProjectGuid>{761800F0-4DE4-7173-9AE6-D45F9F7504F3}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -307,10 +307,10 @@
      <None Include="Assets\Allosaurus\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_BloomAndFlares\BlurAndFlares.shader" />
      <None Include="Assets\Allosaurus\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_BloomAndFlares\BlendForBloom.shader" />
  <Reference Include="UnityEditor.StandardEvents">
- <HintPath>/Volumes/MacEx/Projects/MyKKiOS181029/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
+ <HintPath>/Volumes/MacEx/Projects/MyKKiOS190216/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
  </Reference>
  <Reference Include="Unity.PackageManagerUI.Editor">
- <HintPath>/Volumes/MacEx/Projects/MyKKiOS181029/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
+ <HintPath>/Volumes/MacEx/Projects/MyKKiOS190216/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.AIModule">
  <HintPath>/Volumes/MacEx/Applications/Unity/Unity.app/Contents/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -505,10 +505,10 @@
  <HintPath>/Volumes/MacEx/Applications/Unity/PlaybackEngines/VuforiaSupport/Managed/Runtime/Vuforia.UnityExtensions.dll</HintPath>
  </Reference>
  <Reference Include="DOTween">
- <HintPath>/Volumes/MacEx/Projects/MyKKiOS181029/Assets/Demigiant/DOTween/DOTween.dll</HintPath>
+ <HintPath>/Volumes/MacEx/Projects/MyKKiOS190216/Assets/Demigiant/DOTween/DOTween.dll</HintPath>
  </Reference>
  <Reference Include="Newtonsoft.Json">
- <HintPath>/Volumes/MacEx/Projects/MyKKiOS181029/Assets/UnityPackages/JsonNet/Newtonsoft.Json.dll</HintPath>
+ <HintPath>/Volumes/MacEx/Projects/MyKKiOS190216/Assets/UnityPackages/JsonNet/Newtonsoft.Json.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Analytics">
  <HintPath>/Users/wangyinan/Library/Unity/cache/packages/packages.unity.com/com.unity.analytics@2.0.16/UnityEngine.Analytics.dll</HintPath>
@@ -549,7 +549,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
-      <Project>{B5BCF609-FF63-CB00-6880-BA1C1E4F6253}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
+      <Project>{97DD0C6E-CD77-53D0-F27C-6EF9BCC6C2A1}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

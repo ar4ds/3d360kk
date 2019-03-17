@@ -7,7 +7,7 @@ using UnityEngine.Events;
 using SimpleJSON;
 
 public class GongGaoBarItem : ItemPrefabObj {
-	public Text TitleTxt, TimeTxt;
+	public Text TitleTxt, MuseumTxt, TimeTxt;
 	Image barImage;
 	RectTransform rectTran;
 	float waitT;
@@ -35,7 +35,9 @@ public class GongGaoBarItem : ItemPrefabObj {
 		this.id = jn["id"];
 		this.content = jn["Text"];
 		TitleTxt.text = jn["Title"];
-		TimeTxt.text = jn["Date"];
+		MuseumTxt.text = jn["museum"];
+		System.DateTime tmpD = System.DateTime.Parse(jn["Date"]);
+		TimeTxt.text = tmpD.ToString("yyyy-MM-dd");
 		//判断是否已读
 		if(PlayerPrefs.GetString(string.Format("gonggao:{0},{1}", PlayerPrefs.GetString("GUID"), id)) != ""){
 			SetReadedState();

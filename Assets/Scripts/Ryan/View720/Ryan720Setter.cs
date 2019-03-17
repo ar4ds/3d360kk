@@ -167,6 +167,7 @@ public class Ryan720Setter : RippleGen.Core.MonoBehaviour
 
 	string curSphereTex = "";
 
+	Request myRequest;
 	public void Load720Texture (string tmpStr)
 	{
 		if (curSphereTex == tmpStr) {
@@ -174,7 +175,6 @@ public class Ryan720Setter : RippleGen.Core.MonoBehaviour
 		}
 		myLoadingUI.SetActive (true);
 		curSphereTex = tmpStr;
-		Request myRequest;
 		myRequest = new Request (tmpStr);
 		curSphere.GetComponent<Renderer> ().material.mainTexture = blackTex;
 		//RoteCube.SetActive(true);
@@ -192,14 +192,21 @@ public class Ryan720Setter : RippleGen.Core.MonoBehaviour
 			Debug.Log (p + "%");
 		});
 		myRequest.ReadCache = true;
-		myRequest.CheckExpire = false;
 		addOperation (myRequest);
+	}
+
+	/// <summary>
+	/// This function is called when the behaviour becomes disabled or inactive.
+	/// </summary>
+	void OnDisable()
+	{
+		myRequest.Cancel();
 	}
 
 	void LoadFirstTex (string url)
 	{
-		curSphereTex = url;
 		Request myRequest;
+		curSphereTex = url;
 		myLoadingUI.SetActive (true);
 		myRequest = new Request (url);
 		myRequest.OnComplete.Add ((r) => {

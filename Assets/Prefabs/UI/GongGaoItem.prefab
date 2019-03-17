@@ -47,6 +47,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1539237158350972
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 224479136001606014}
+  - component: {fileID: 222878709893366544}
+  - component: {fileID: 114520901027177382}
+  m_Layer: 5
+  m_Name: Title
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1924806774758410
 GameObject:
   m_ObjectHideFlags: 0
@@ -58,7 +75,7 @@ GameObject:
   - component: {fileID: 222763105921146704}
   - component: {fileID: 114673331408467050}
   m_Layer: 5
-  m_Name: Title
+  m_Name: Museum
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -105,6 +122,39 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &114520901027177382
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1539237158350972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.3773585, g: 0.3773585, b: 0.3773585, a: 1}
+  m_RaycastTarget: 0
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 55
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 2
+    m_MaxSize: 60
+    m_Alignment: 3
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 1
+    m_LineSpacing: 1
+  m_Text: "\u4E2D\u56FD\u5171\u4EA7\u515A\u9886\u5BFC\u7684\u591A\u515A\u5408\u4F5C\u548C\u653F\u6CBB\u534F\u5546\u5236\u5EA6\u4F5C\u4E3A\u6211\u56FD\u4E00\u9879\u57FA\u672C\u653F\u6CBB\u5236\u5EA6\uFF0C\u662F\u4E2D\u56FD\u5171\u4EA7\u515A\u3001\u4E2D\u56FD\u4EBA\u6C11\u548C\u5404\u6C11\u4E3B\u515A\u6D3E\u3001\u65E0\u515A\u6D3E\u4EBA\u58EB\u7684\u4F1F\u5927\u653F\u6CBB\u521B\u9020\uFF0C\u662F\u4ECE\u4E2D\u56FD\u571F\u58E4\u4E2D\u751F\u957F\u51FA\u6765\u7684\u65B0\u578B\u653F\u515A\u5236\u5EA6\u3002"
 --- !u!114 &114600359153622414
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -177,7 +227,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.3773585, g: 0.3773585, b: 0.3773585, a: 1}
+  m_Color: {r: 0.509434, g: 0.507031, b: 0.507031, a: 1}
   m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -186,15 +236,15 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 40
+    m_FontSize: 35
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 2
+    m_MinSize: 0
     m_MaxSize: 50
     m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 0
+    m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "\u4E2D\u56FD\u5171\u4EA7\u515A\u9886\u5BFC\u7684\u591A\u515A\u5408\u4F5C\u548C\u653F\u6CBB\u534F\u5546\u5236\u5EA6\u4F5C\u4E3A\u6211\u56FD\u4E00\u9879\u57FA\u672C\u653F\u6CBB\u5236\u5EA6\uFF0C\u662F\u4E2D\u56FD\u5171\u4EA7\u515A\u3001\u4E2D\u56FD\u4EBA\u6C11\u548C\u5404\u6C11\u4E3B\u515A\u6D3E\u3001\u65E0\u515A\u6D3E\u4EBA\u58EB\u7684\u4F1F\u5927\u653F\u6CBB\u521B\u9020\uFF0C\u662F\u4ECE\u4E2D\u56FD\u571F\u58E4\u4E2D\u751F\u957F\u51FA\u6765\u7684\u65B0\u578B\u653F\u515A\u5236\u5EA6\u3002"
@@ -209,7 +259,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96cca64d0d7374abe864bd38008d0d5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TitleTxt: {fileID: 114673331408467050}
+  TitleTxt: {fileID: 114520901027177382}
+  MuseumTxt: {fileID: 114673331408467050}
   TimeTxt: {fileID: 114646615752885972}
 --- !u!222 &222080515443762142
 CanvasRenderer:
@@ -223,6 +274,12 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1924806774758410}
+--- !u!222 &222878709893366544
+CanvasRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1539237158350972}
 --- !u!222 &222947754301079162
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -258,6 +315,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 224015078088591132}
+  - {fileID: 224479136001606014}
   - {fileID: 224371319223094630}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -278,10 +336,28 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 224147193696690758}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 40, y: -35}
+  m_SizeDelta: {x: 930, y: 59.999985}
+  m_Pivot: {x: 0, y: 0.5}
+--- !u!224 &224479136001606014
+RectTransform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1539237158350972}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 224147193696690758}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -25, y: 0.0000076293945}
-  m_SizeDelta: {x: -150, y: -60.000015}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 40, y: 25}
+  m_SizeDelta: {x: 930, y: 59.999985}
+  m_Pivot: {x: 0, y: 0.5}

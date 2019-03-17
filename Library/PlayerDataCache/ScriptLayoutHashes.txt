@@ -347,7 +347,7 @@ db3b233e35a88802fed1717d19c3d9ec Assembly-CSharp.dll:UnityStandardAssets.Utility
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.TestMenuList
 a8796ecdc9d5c260bbe32f30c4b10708 Assembly-CSharp.dll:UnityStandardAssets.CrossPlatformInput.TouchPad
 0ad469aca31264c6140b1e503c43ab6b Assembly-CSharp.dll:UnityStandardAssets.Utility.TimedObjectDestructor
-ccfdb09cc7199062af84371be80adced Assembly-CSharp.dll:.GongGaoBarItem
+f0b4602306968201575b7793ca5855a9 Assembly-CSharp.dll:.GongGaoBarItem
 ec50a9a0f499482d9c172149ad0912e6 Assembly-UnityScript.dll:.ContrastEnhance
 8c3f676896facd89c64b01781e9ccd00 Assembly-CSharp.dll:.CNTouchpad
 612212d3762c81831b2161961883f8cb Assembly-UnityScript.dll:.GuPingRote

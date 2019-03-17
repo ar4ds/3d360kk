@@ -130,6 +130,9 @@ public class KanKeHouTaiMgr : MonoBehaviour {
                 BaseInfoTab[i].GetComponentInChildren<Text>().color = Color.grey;
             }
         }
+
+        // 更新站内信列表
+        StartCoroutine(UpdateMailContentItem(index));
     }
     void InitializeUI(int tabIndex){
         if(tabIndex == 1){
@@ -138,12 +141,12 @@ public class KanKeHouTaiMgr : MonoBehaviour {
             ChangeUserTabContent(tabIndex);
         }
     }
-    IEnumerator UpdateMailContentItem(){
+    IEnumerator UpdateMailContentItem(int index){
         //清空所有站内信
         ClearAllChilds(InfoBarItemParent);
         float tmpH = 100f;
         InfoBarItemParent.GetComponent<GridLayoutGroup>().cellSize = new Vector2(Screen.width, tmpH);
-        string tmpUrl = string.Format("http://3d360kk.com/mobile/getletters?uid={0}", guid);
+        string tmpUrl = string.Format("http://3d360kk.com/mobile/getletters?uid={0}&type={1}", guid, index + 1);
         WWW www = new WWW(tmpUrl);
         yield return www;
         List<JSONNode> jsList = new List<JSONNode>(){};
@@ -216,7 +219,7 @@ public class KanKeHouTaiMgr : MonoBehaviour {
                     ChangeUserInfoContent[0].text = user["MP"];
                     ChangeUserInfoContent[1].text = user["Email"];
                     // 更新站内信列表
-                    StartCoroutine(UpdateMailContentItem());
+                    StartCoroutine(UpdateMailContentItem(0));
                 }else{
                     RyanUIController.Instance.PopMessageDialogue("提示", "用户名或密码错误");
                     HasLogin.SetActive(false);
