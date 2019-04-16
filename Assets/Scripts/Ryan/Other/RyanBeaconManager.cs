@@ -27,7 +27,8 @@ public class RyanBeaconManager : MonoBehaviour
 
     void Start()
     {
-        // StartCoroutine(InsertBeaconPages(""));
+        //StartCoroutine(InsertBeaconPages("12345"));
+        beaconTestTxt.text = "Hello\n";
         _instance = this;
         titleHeight = BeaconTitle.GetComponent<RectTransform>().sizeDelta.y;
         bs_State = BroadcastState.inactive;
@@ -136,6 +137,7 @@ public class RyanBeaconManager : MonoBehaviour
         }
     }
     void On(){
+        beaconTestTxt.text += "On\n";
         #region ReceiveMode
         iBeaconReceiver.BeaconRangeChangedEvent += OnBeaconRangeChanged;
         iBeaconReceiver.regions = new iBeaconRegion[] { new iBeaconRegion("", new Beacon()) };
@@ -146,22 +148,34 @@ public class RyanBeaconManager : MonoBehaviour
         BeaconDataText.text = "开始寻找目标...";
     }
     void Off(){
+        beaconTestTxt.text += "Off\n";
         iBeaconReceiver.Stop();
         iBeaconReceiver.BeaconRangeChangedEvent -= OnBeaconRangeChanged;
         removeFoundBeacons();
         bs_State = BroadcastState.inactive;
     }
 
+    List<string> tmpUUIDs = new List<string>();
+    public Text beaconTestTxt;
     private void OnBeaconRangeChanged(Beacon[] beacons)
     {
         foreach (Beacon b in beacons)
         {
+            if(!tmpUUIDs.Contains(b.major.ToString())){
+                tmpUUIDs.Add(b.major.ToString());
+                beaconTestTxt.text = "";
+                foreach(string str in tmpUUIDs){
+                    beaconTestTxt.text += str + "\n";
+                }
+            }
+
             var index = mybeacons.IndexOf(b);
             if (index == -1)
             {
                 // 添加beacon页
                 mybeacons.Add(b);
-                StartCoroutine(InsertBeaconPages(b.UUID));
+                //StartCoroutine(InsertBeaconPages(b.UUID));
+                StartCoroutine(InsertBeaconPages(b.major.ToString()));
             }
             else
             {
@@ -179,15 +193,20 @@ public class RyanBeaconManager : MonoBehaviour
     }
 
     IEnumerator InsertBeaconPages(string uuid){
-        string url = string.Format("http://www.3d360kk.com/mobile/getbeacon?guid={0}", uuid);
-        // url = "http://www.3d360kk.com/mobile/getbeacon?guid=2F234454-CF6D-4A0F-ADF2-F4911BA9FFA6";
-        WWW www = new WWW(url);
-        yield return www;
-        if(JSON.Parse(www.text)["flag"].AsBool){
-            foreach(JSONNode jn in JSON.Parse(JSON.Parse(www.text)["photos"]).Children){
-                RyanUIController.Instance.InsertBeaconPage(jn["photo_name"].Value);
+            string url = string.Format("http://www.3d360kk.com/mobile/getbeacon?guid={0}", uuid);
+            // url = "http://www.3d360kk.com/mobile/getbeacon?guid=2F234454-CF6D-4A0F-ADF2-F4911BA9FFA6";
+            WWW www = new WWW(url);
+            yield return www;
+            string txt = www.text.Replace("\\\"", "\"")
+                .Replace("\"[", "[")
+                .Replace("\"{", "{")
+                .Replace("]\"", "]")
+                .Replace("}\"", "}");
+            if (JSON.Parse(txt)["flag"].AsBool){
+                foreach(JSONNode jn in JSON.Parse(txt)["photos"].Children){
+                    RyanUIController.Instance.InsertBeaconPage(jn["photo_name"].Value);
+                }
             }
-        }
     }
 
     private void removeFoundBeacons()

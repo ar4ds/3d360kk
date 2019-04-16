@@ -47,9 +47,9 @@ public class Ryan720Setter : RippleGen.Core.MonoBehaviour
 		DownloadTxtAndThumbnails ();
 		loadedThumbnailCount = 0;
 		if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer) {
-			gameObject.AddComponent<LaucherGyroCtrl> ();
+			gameObject.AddComponent<GyroTest> ();
 		} else {
-			gameObject.AddComponent<LaucherGyroCtrl> ();
+			gameObject.AddComponent<GyroTest> ();
 			//curSphere.AddComponent<FingerCtrl720>();
 		}
 	}

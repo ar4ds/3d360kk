@@ -155,6 +155,7 @@ e9bdabf9265d758d56f01bb188916fa8 UnityEngine.Networking.dll:UnityEngine.Networki
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.RyanSceneMgr
 cbbc833b1ee6c87dfbc2ab49515d85b7 Assembly-CSharp.dll:.RyanUIController
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.TestBoats
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.GyroTest
 c428facad3a9e9e1152b9369dda3e073 Assembly-CSharp.dll:.RyanWelcome
 322cb40e1e282f28af980cbef7922a90 UnityEngine.Analytics.dll:UnityEngine.Analytics.AnalyticsEventTracker
 dc07d7ad69b399a46e92c483bf1c04ca UnityEngine.Analytics.dll:UnityEngine.Analytics.AnalyticsTracker
@@ -274,7 +275,7 @@ f266a453cd4bfbe81533762a3e3589f4 DOTween.dll:DG.Tweening.Core.DOTweenComponent
 e8887de5d16548d9bd768071f4c267ad Assembly-CSharp.dll:.GlowEffect
 9d07d8a260b1190d61a215ab64204cef Assembly-CSharp.dll:.RyanMailPage
 cac5093fb1baf037bd671ecbc6727828 Assembly-UnityScript.dll:.ScreenOverlay
-9985e60bd6585bbbf17615d8cf681d7a Assembly-CSharp.dll:.RyanBeaconManager
+ee8fe8e68f56df22a6f308c14b161cce Assembly-CSharp.dll:.RyanBeaconManager
 b26b3a55de2a8cbeee573d45c8848f09 Assembly-CSharp.dll:.SSAOEffect
 05524b8f659e7bfe5756d1335fec24ba Assembly-UnityScript.dll:.PostEffectsHelper
 fc1e0f4d8439d9928083474691511a13 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkAnimator

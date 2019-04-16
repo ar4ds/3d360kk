@@ -203,6 +203,7 @@
      <Compile Include="Assets\Scripts\Ryan\TravelScene\RyanMapTrigger.cs" />
      <Compile Include="Assets\Scripts\Ryan\Video\VideoManager.cs" />
      <Compile Include="Assets\Scripts\Ryan\View720\FingerCtrl720.cs" />
+     <Compile Include="Assets\Scripts\Ryan\View720\GyroTest.cs" />
      <Compile Include="Assets\Scripts\Ryan\View720\LaucherGyroCtrl.cs" />
      <Compile Include="Assets\Scripts\Ryan\View720\Ryan720Setter.cs" />
      <Compile Include="Assets\Scripts\Test\ExampleClass.cs" />
