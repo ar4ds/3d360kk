@@ -23,6 +23,7 @@ namespace RippleGen
 		public Exception error;
 		// 是否向服务端请求过期,如果没过期就不请求。
 		public bool CheckExpire = true;
+		public bool Override = false;
 		private bool is304 = false;
 
 		public bool Is304{ get { return is304; } }

@@ -44,7 +44,8 @@ public class Ryan720Setter : RippleGen.Core.MonoBehaviour
 		curSphere = Instantiate (SpherePrefab).gameObject;
 		curSphere.gameObject.SetActive (false);
 		curSphere.transform.localScale = new Vector3 (-1f, 1f, 1f);
-		DownloadTxtAndThumbnails ();
+		StartCoroutine(DownloadTxtAndThumbnails());
+		// DownloadTxtAndThumbnails();
 		loadedThumbnailCount = 0;
 		if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer) {
 			gameObject.AddComponent<GyroTest> ();
@@ -92,17 +93,46 @@ public class Ryan720Setter : RippleGen.Core.MonoBehaviour
 
 	#region Thumbnails
 
-	void DownloadTxtAndThumbnails ()
+	void DownloadTxtAndThumbnails0 ()
 	{
+		string txtPath = RyanGlobalProps.VIEW720Index_URL + "order.txt";
 		Request myRequest;
-		myRequest = new Request (RyanGlobalProps.VIEW720Index_URL + "order.txt");
+		myRequest = new Request (txtPath);
 		myRequest.OnComplete.Add ((r) => {
 			string tmpTxt = File.ReadAllText (myRequest.responseFile);
 			GetThumbnailsFromTxt (tmpTxt);
 		});
 		myRequest.ReadCache = true;
 		myRequest.CheckExpire = false;
+		myRequest.Override = true;
 		addOperation (myRequest);
+	}
+
+	IEnumerator DownloadTxtAndThumbnails ()
+	{
+		string serverPath = RyanGlobalProps.VIEW720Index_URL + "order.txt";
+		string dirPath = RyanGlobalProps.cacheDir + RyanGlobalProps.CurrentMuseumName;
+		string localPath = Path.Combine(dirPath, "order.txt");
+		if(!Directory.Exists(dirPath)){
+			Directory.CreateDirectory(dirPath);
+		}
+		WWW www = new WWW(serverPath);
+		// 联网成功，更新本地文件
+		yield return www;
+
+		if(!string.IsNullOrEmpty(www.error)){
+			Debug.LogError(www.error);
+			// 联网失败，调用本地文件
+			if(File.Exists(localPath)){
+				GetThumbnailsFromTxt(File.ReadAllText(localPath));
+			}else{
+				Debug.LogError("文件不存在！");
+			}
+		}else{
+			// 联网成功，更新本地文件
+			File.WriteAllText(localPath, www.text);
+			GetThumbnailsFromTxt(www.text);
+		}
 	}
 
 	int loadedThumbnailCount = 0;
