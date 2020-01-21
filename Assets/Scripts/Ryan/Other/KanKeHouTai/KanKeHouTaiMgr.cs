@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using SimpleJSON;
+using UnityEngine.Networking;
 using System;
 using System.Text.RegularExpressions;
 
@@ -35,7 +36,6 @@ public class KanKeHouTaiMgr : MonoBehaviour {
     Button[] userTabs;
     InfoBarItem curInfoBarItem;
     GongGaoBarItem curGongGaoItem;
-    CollectionItemBar curCollectionItem;
     string guid, token;
     Coroutine LoadItemsCoroutine;
 	// Use this for initialization
@@ -146,11 +146,14 @@ public class KanKeHouTaiMgr : MonoBehaviour {
         ClearAllChilds(InfoBarItemParent);
         float tmpH = 100f;
         InfoBarItemParent.GetComponent<GridLayoutGroup>().cellSize = new Vector2(Screen.width, tmpH);
-        string tmpUrl = string.Format("http://3d360kk.com/mobile/getletters?uid={0}&type={1}", guid, index + 1);
-        WWW www = new WWW(tmpUrl);
-        yield return www;
+        string tmpUrl = string.Format("http://www.3d360kk.com/api/letters/list?token={0}&type={1}", token, index + 1);
+        UnityWebRequest www = new UnityWebRequest(tmpUrl);
+        Debug.LogError(tmpUrl);
+        www.downloadHandler = new DownloadHandlerBuffer();
+        yield return www.SendWebRequest();
         List<JSONNode> jsList = new List<JSONNode>(){};
-        jsList.AddRange(JSON.Parse(www.text).Children);
+        Debug.LogError(www.downloadHandler.text);
+        jsList.AddRange(JSON.Parse(www.downloadHandler.text).Children);
         for(int i = 0; i < jsList.Count; i++){
             InfoBarItem tmpItem = Instantiate(InfoBarItemPrefab, InfoBarItemParent);
             tmpItem.Init(jsList[i]);
@@ -163,7 +166,9 @@ public class KanKeHouTaiMgr : MonoBehaviour {
         itemParent.GetComponent<GridLayoutGroup>().cellSize = new Vector2(Screen.width, itemHeight);
         // 清空列表
         ClearAllChilds(itemParent);
+        Debug.LogError(url);
         WWW www = new WWW(url);
+        Debug.LogError(url);
         yield return www;
         if(!string.IsNullOrEmpty(www.text)){
             List<JSONNode> jsList = new List<JSONNode>(){};
@@ -196,7 +201,7 @@ public class KanKeHouTaiMgr : MonoBehaviour {
             ResetUserInfo();
             yield return 0;
         }else{
-            string tmpUrl = string.Format("http://www.3d360kk.com/mobile/Login1?username={0}&password={1}", name, pwd);            
+            string tmpUrl = string.Format("http://www.3d360kk.com/mobile/Login?username={0}&password={1}", name, pwd);            
             WWW www = new WWW(tmpUrl);
             yield return www;
             if(!string.IsNullOrEmpty(www.text)){
@@ -210,14 +215,16 @@ public class KanKeHouTaiMgr : MonoBehaviour {
                     PlayerPrefs.SetString("Password", pwd);
                     token = jn["token"];
                     Debug.Log("token = " + token);
-                    token = name;
-                    JSONNode user = JSON.Parse(jn["user"].Value);
-                    guid = user["UserId"];
+                    //token = name;
+                    //JSONNode user = JSON.Parse(jn["user"].Value);
+                    guid = jn["token"];
                     InitializeUI(1);
-                    PlayerPrefs.SetString("GUID", guid);
+                    Debug.LogError("token=" + guid);
+                    PlayerPrefs.SetString("token", token);
+                    Debug.LogError(token);
                     UserNameTxt.text = name;
-                    ChangeUserInfoContent[0].text = user["MP"];
-                    ChangeUserInfoContent[1].text = user["Email"];
+                    ChangeUserInfoContent[0].text = jn["mP"];
+                    ChangeUserInfoContent[1].text = jn["email"];
                     // 更新站内信列表
                     StartCoroutine(UpdateMailContentItem(0));
                 }else{
@@ -380,7 +387,7 @@ public class KanKeHouTaiMgr : MonoBehaviour {
         }
         // 加载列表内容
         LoadItemsCoroutine = StartCoroutine(LoadContentItems(180f,
-            string.Format("http://www.3d360kk.com/mobile/query_museum?token={0}", guid),
+            string.Format("http://www.3d360kk.com/mobile/query_museum?token={0}", token),
             //"http://www.3d360kk.com/mobile/load_collection",
             CollectionItemBarPrefab, CollectionItemBarParent));
     }

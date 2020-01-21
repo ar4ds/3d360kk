@@ -58,7 +58,6 @@ namespace RippleGen.Operation {
 				entry.onTreadComplete.Add (() => {
 					entries.Remove(entry);
 					action = false;
-                    
                     lock(methodsQueue) {
     					methodsQueue.Add (() =>{
     						// 到主线程中调用结束方法。

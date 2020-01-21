@@ -73,10 +73,10 @@ public class RyanGlobalProps : MonoBehaviour
 		return "刚刚";
 	}
 
-	public static string PREFIX_URL = "http://www.3d360kk.com/upload";
-	public static string ARScan_URL = PREFIX_URL + "/ARScan";
+	public static string PREFIX_URL = "http://www.3d360kk.com";
+	public static string ARScan_URL = PREFIX_URL + "/upload/ARScan";
 
-	public static void SetLoadURL(string sceneName)
+	public static void SetLoadURL(string sceneName, string id)
 	{
 		string curPlatform = "";
 		if (Application.platform == RuntimePlatform.OSXEditor
@@ -86,9 +86,11 @@ public class RyanGlobalProps : MonoBehaviour
 		}
 		CurrentMuseumName = sceneName;
 		VIDEO_URL = PREFIX_URL + "/" + sceneName + "/mp4/video.mp4";
-		VIEW720Index_URL = PREFIX_URL + "/" + sceneName + "/720/";
-		VRMainBG_URL = PREFIX_URL + "/" + sceneName + "/VRMainBGPicture/";
-		TRAVEL_URL = PREFIX_URL + "/" + sceneName + curPlatform + "travelModel.unity3d";
+		//VIEW720Index_URL = PREFIX_URL + "/mobile/panoramalist?pid=" + id;
+		VIEW720Index_URL = PREFIX_URL + "/api/museum/Panoramalist?id=" + id;
+		// 背景图地址
+		VRMainBG_URL = PREFIX_URL + "/api/museum/list?id=" + id;
+		TRAVEL_URL = PREFIX_URL + "/upload/" + sceneName + curPlatform + "travelModel.unity3d";
 		Debug.Log("VIDEO_URL: " + VIDEO_URL);
 		Debug.Log("VIEW720_URL: " + VIEW720Index_URL);
 		Debug.Log("TRAVEL_URL: " + TRAVEL_URL);

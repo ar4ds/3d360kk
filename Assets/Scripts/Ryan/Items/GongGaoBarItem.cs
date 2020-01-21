@@ -39,7 +39,7 @@ public class GongGaoBarItem : ItemPrefabObj {
 		System.DateTime tmpD = System.DateTime.Parse(jn["Date"]);
 		TimeTxt.text = tmpD.ToString("yyyy-MM-dd");
 		//判断是否已读
-		if(PlayerPrefs.GetString(string.Format("gonggao:{0},{1}", PlayerPrefs.GetString("GUID"), id)) != ""){
+		if(PlayerPrefs.GetString(string.Format("gonggao:{0}", id)) != ""){
 			SetReadedState();
 		}
 	}
@@ -55,7 +55,7 @@ public class GongGaoBarItem : ItemPrefabObj {
 		Debug.Log("OnBarClick");
 		// 弹出站内信
 		RyanUIController.Instance.PopGongGaoContentPage(TitleTxt.text, content);
-		PlayerPrefs.SetString(string.Format(string.Format("gonggao:{0},{1}", PlayerPrefs.GetString("GUID"), id)), "readed");
+		PlayerPrefs.SetString(string.Format(string.Format("gonggao:{0}", id)), "readed");
 		SetReadedState();
 	}
 	void OnCancelPressedMode () {
@@ -64,7 +64,6 @@ public class GongGaoBarItem : ItemPrefabObj {
 	}
 
 	void SetReadedState(){
-		return;
 		TimeTxt.color = TitleTxt.color = Color.grey * .25f;
         GongGaoMgr.Instance.UpdateGongGaoNumberTag();
 	}
@@ -78,7 +77,7 @@ public class GongGaoBarItem : ItemPrefabObj {
 		Debug.Log("Press Succeed.");
 		return;
 		UnityAction tmpAction = null;
-		if(!string.IsNullOrEmpty(PlayerPrefs.GetString("GUID"))){
+		if(!string.IsNullOrEmpty(PlayerPrefs.GetString("token"))){
 			tmpAction += RemoveItem;
 		}else{
 			tmpAction += RemoveItemLocal;
@@ -96,7 +95,7 @@ public class GongGaoBarItem : ItemPrefabObj {
 	}
 	//删除站内信
 	IEnumerator DeleteLetter(){
-		string url = string.Format("http://www.3d360kk.com/mobile/RemoveLetter?mid={0}&uid={1}", id, PlayerPrefs.GetString("GUID"));
+		string url = string.Format("http://www.3d360kk.com/mobile/RemoveLetter?mid={0}&uid={1}", id, PlayerPrefs.GetString("token"));
 		print(url);
 		WWW www = new WWW(url);
 		yield return www;

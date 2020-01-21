@@ -14,7 +14,6 @@ namespace RippleGen.Utils {
 			{
 				hashString += System.Convert.ToString(hashBytes[i], 16).PadLeft(2, '0');
 			}
-
 			return hashString.PadLeft(32, '0');
 		}
 
@@ -27,7 +26,7 @@ namespace RippleGen.Utils {
                 string[] arr = line.Split ('=');
                 if (arr.Length < 2)
                     continue;
-                string key = arr [0].Trim ();
+                string key = arr[0].Trim ();
 
                 table.Add (key, arr[1]);
             }

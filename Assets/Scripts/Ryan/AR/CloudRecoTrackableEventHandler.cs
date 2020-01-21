@@ -36,6 +36,7 @@ public class CloudRecoTrackableEventHandler : MonoBehaviour, ITrackableEventHand
 
 	void Start()
 	{
+		Debug.LogError(transform);
 		cloudReco = FindObjectOfType<CloudRecoBehaviour>();
 		ryanVideoCtrl = FindObjectOfType<VideoController>();
 		loadingCircle = FindObjectOfType<RyanARLoadingCircle>();
@@ -120,7 +121,7 @@ public class CloudRecoTrackableEventHandler : MonoBehaviour, ITrackableEventHand
 		ObjectTracker objectTracker = TrackerManager.Instance.GetTracker<ObjectTracker>();
 		if (objectTracker != null)
 		{
-			objectTracker.TargetFinder.Stop();
+			objectTracker.GetTargetFinder<ImageTargetFinder>().Stop();
 		}
 		Debug.Log("Trackable " + trackName + " found");
 	}

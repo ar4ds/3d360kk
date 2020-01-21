@@ -6,14 +6,6 @@ public class RyanResTab : MonoBehaviour
 {
 	public RyanSourceMgr.Type _type;
 
-	public enum Type
-	{
-		bg,
-		movie,
-		view720,
-		wandar
-	}
-	;
 	//key:name	value:ids
 	public Dictionary<string, List<string>> curDic = new Dictionary<string, List<string>> ();
 	public Dictionary<string, string> curSize = new Dictionary<string, string> ();

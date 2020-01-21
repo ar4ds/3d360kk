@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Pages.unity
     guid: 98c3b20b7802a413bad890459028cb0b
   - enabled: 1
+    path: Assets/Scenes/VRMain.unity
+    guid: 77730cac13fcc4eda96ee0530deaeb4c
+  - enabled: 1
     path: Assets/Scenes/MuseumList.unity
     guid: 5a87fad5d0e114836b7afe3dc5d7f42f
   - enabled: 1
@@ -29,7 +32,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Scene_Video.unity
     guid: 23de29328019246a090f0597d6bb96e7
-  - enabled: 1
-    path: Assets/Scenes/VRMain.unity
-    guid: bf4aaf77f6e2a47909f0d439d7f745df
   m_configObjects: {}

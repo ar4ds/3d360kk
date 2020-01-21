@@ -25,7 +25,7 @@ public class GongGaoMgr : MonoBehaviour {
 		ResetList();
         float tmpH = 180f;
         GongGaoListParent.GetComponent<GridLayoutGroup>().cellSize = new Vector2(Screen.width, tmpH);
-		string tmpGUID = PlayerPrefs.GetString("GUID");
+		string tmpGUID = PlayerPrefs.GetString("token");
 		bool isGuest = false;
 		if(string.IsNullOrEmpty(tmpGUID)){
 			//使用游客身份登录
@@ -69,7 +69,7 @@ public class GongGaoMgr : MonoBehaviour {
 		StartCoroutine(_UpdateGongGaoNumberTag());
     }
 	IEnumerator _UpdateGongGaoNumberTag(){
-		string tmpGUID = PlayerPrefs.GetString("GUID");
+		string tmpGUID = PlayerPrefs.GetString("token");
 		if(string.IsNullOrEmpty(tmpGUID)){
 			//使用游客身份登录
 			tmpGUID = RyanGlobalProps.GuestGUID;
@@ -90,7 +90,7 @@ public class GongGaoMgr : MonoBehaviour {
 
 	int GetReadedCount(JSONNode jn){
 		return 0;
-		string tmpGUID = PlayerPrefs.GetString("GUID");
+		string tmpGUID = PlayerPrefs.GetString("token");
 		bool isGuest = false;
 		if(string.IsNullOrEmpty(tmpGUID)){
 			//使用游客身份登录
@@ -100,7 +100,7 @@ public class GongGaoMgr : MonoBehaviour {
 		List<JSONNode> jsList = new List<JSONNode>(){};
 		jsList.AddRange(jn["announces"].Children);
 		for(int i = 0; i < jsList.Count; i++){
-			if(PlayerPrefs.GetString(string.Format("gonggao:{0},{1}", PlayerPrefs.GetString("GUID"), jsList[i]["id"])) == ""){
+			if(PlayerPrefs.GetString(string.Format("gonggao:{0}", jsList[i]["id"])) == ""){
 				++tmpC;
 				if(isGuest && PlayerPrefs.HasKey("gonggaodelete" + jsList[i]["id"])){
 					--tmpC;

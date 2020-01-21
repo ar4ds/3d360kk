@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
-using System.Collections;
 using System.Collections.Generic;
 
 public class RyanReturnToOptionList : MonoBehaviour
@@ -16,6 +15,7 @@ public class RyanReturnToOptionList : MonoBehaviour
 	void Update(){
 		if(Input.GetKeyDown(KeyCode.Escape)){
 			BackToMainScene();
+			Debug.LogError("Escape");
 		}
 	}
 	public void BackToMainScene()

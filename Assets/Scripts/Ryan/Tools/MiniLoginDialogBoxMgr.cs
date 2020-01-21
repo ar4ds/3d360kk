@@ -103,7 +103,7 @@ public class MiniLoginDialogBoxMgr : MonoBehaviour {
             RyanShowLoadOptions.Instance.PopMessageDialogue("提示", "用户名和密码不能为空");
             yield return 0;
         }else{
-            string tmpUrl = string.Format("http://www.3d360kk.com/mobile/Login1?username={0}&password={1}", name, pwd);
+            string tmpUrl = string.Format("http://www.3d360kk.com/mobile/Login?username={0}&password={1}", name, pwd);
             WWW www = new WWW(tmpUrl);
             yield return www;
             Debug.Log(JSON.Parse(www.text).ToString());
@@ -111,11 +111,9 @@ public class MiniLoginDialogBoxMgr : MonoBehaviour {
                 PlayerPrefs.SetString("UserName", name);
                 PlayerPrefs.SetString("Password", pwd);
                 token = JSON.Parse(www.text)["token"];
-                token = name;
+                    Debug.LogError(token);
                 Debug.Log("token = " + token);
-                JSONNode jn = JSON.Parse(www.text.ToString());
-                guid = JSON.Parse(jn["user"].Value)["UserId"];
-                PlayerPrefs.SetString("GUID", guid);
+                PlayerPrefs.SetString("token", token);
                 HideMainPage();
                 RyanShowLoadOptions.Instance.CollectScene();
             }else{

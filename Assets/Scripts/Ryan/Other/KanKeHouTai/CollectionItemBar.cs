@@ -48,12 +48,7 @@ public class CollectionItemBar : ItemPrefabObj {
 	}
 
 	void OnClickMuseum(){
-		LoadLevel(museum);
-	}
-	
-	void LoadLevel(string str)
-	{
-		RyanGlobalProps.SetLoadURL(str);
+		RyanGlobalProps.SetLoadURL(museum, "");
 		SceneManager.LoadScene("VRMain");
 	}
 
@@ -74,7 +69,7 @@ public class CollectionItemBar : ItemPrefabObj {
 	}
 	//删除站内信
 	IEnumerator DeleteLetter(){
-		string url = string.Format("http://www.3d360kk.com/mobile/revoke_collection?id={0}", cmid);
+		string url = string.Format("http://www.3d360kk.com/mobile/remove_museum?id={0}",cmid);
 		Debug.Log(url);
 		WWW www = new WWW(url);
 		yield return www;

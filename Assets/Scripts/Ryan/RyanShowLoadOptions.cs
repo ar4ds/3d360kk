@@ -90,8 +90,8 @@ public class RyanShowLoadOptions : MonoBehaviour
 	}
 
 	IEnumerator _CollectScene(){
-		string guid = PlayerPrefs.GetString("GUID");
-		string url2 = string.Format("http://www.3d360kk.com/mobile/query_museum?token={0}", guid);
+		string token = PlayerPrefs.GetString("token");
+		string url2 = string.Format("http://www.3d360kk.com/mobile/query_museum?token={0}", token);
 		WWW www2 = new WWW(url2);
 		yield return www2;
 		List<JSONNode> jsList = new List<JSONNode>(){};
@@ -106,7 +106,7 @@ public class RyanShowLoadOptions : MonoBehaviour
 		}
 		if(!already){
 			string url = string.Format("http://www.3d360kk.com/mobile/save_museum?token={0}&museum={1}",
-							guid, RyanGlobalProps.CurrentMuseumName);
+							token, RyanGlobalProps.CurrentMuseumName);
 			Debug.Log(url);
 			WWW www = new WWW(url);
 			yield return www;
