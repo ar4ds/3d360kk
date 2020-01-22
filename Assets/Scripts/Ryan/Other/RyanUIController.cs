@@ -606,6 +606,8 @@ public class RyanUIController : RippleGen.Core.MonoBehaviour
     }
     void PopResourceMgrPage()
     {
+        // 初始化内容
+        GetComponent<RyanSourceMgr>().Init();
         PopRightPage(ResourceMgrPage);
     }
     public void PopMuseumListPage()

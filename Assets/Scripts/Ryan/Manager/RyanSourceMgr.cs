@@ -32,8 +32,10 @@ public class RyanSourceMgr : MonoBehaviour
     Request myRequest;
     Rect itemRect;
 
-    void Start()
+    internal void Init()
     {
+        Debug.Log("init resource");
+        typeDic.Clear();
         itemRect = ResItemPrefab.GetComponent<RectTransform>().rect;
         resGrid = ResListRoot.GetComponent<GridLayoutGroup>();
         resGrid.cellSize = new Vector2(Screen.width, 100);
@@ -65,7 +67,6 @@ public class RyanSourceMgr : MonoBehaviour
         }
         foreach (string k in jn.Keys)
         {
-            Debug.Log(jn.ToString());
             if (jn[k]["status"].Value == "over" && !string.IsNullOrEmpty(jn[k]["type"].Value))
             {
                 string tmpTypeStr = jn[k]["type"].Value;
@@ -97,7 +98,6 @@ public class RyanSourceMgr : MonoBehaviour
 
     void InitResList(RyanResTab tab)
     {
-        Debug.LogError("InitResList");
         //清空所有子对象
         List<Transform> tmpCList = new List<Transform>();
         for (int i = 0; i < ResListRoot.childCount; i++)
@@ -110,6 +110,7 @@ public class RyanSourceMgr : MonoBehaviour
         }
         tmpCList.Clear();
         List<string> keys = new List<string>(tab.curDic.Keys);
+        
         GameObject scrollViewGO = ResListRoot.parent.gameObject;
         scrollViewGO.transform.localPosition = Vector3.zero;
 
